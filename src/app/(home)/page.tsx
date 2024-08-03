@@ -195,7 +195,7 @@ function Page() {
               </button>
             </div>
             <div className="p-4 border rounded-lg bg-white shadow-sm">
-              <h2 className="text-3xl font-bold">'20 - '24</h2>
+              <h2 className="text-3xl font-bold">20 - 24</h2>
               <p className="font-semibold mt-2">Dataset</p>
               <p className="text-gray-500 mt-2">
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
