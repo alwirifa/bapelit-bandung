@@ -13,8 +13,8 @@ const NavButton = ({ href, label, isActive }: Props) => {
   return (
     <div
       className={cn(
-        "w-full lg:w-auto flex flex-col items-start font-normal text-sm text-blue-500 px-4 py-4 border-none focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none transition relative",
-        isActive ? "bg-white/10 text-blue-500 relative flex items-center justify-center font-medium" : "bg-transparent hover:bg-white/20 hover:text-blue-400",
+        "w-full lg:w-auto flex flex-col items-start font-medium text-base text-blue-500 px-4 py-4 border-none focus-visible:ring-offset-0 focus-visible:ring-transparent outline-none transition relative",
+        isActive ? "bg-white/10 text-blue-500 relative flex items-center justify-center font-semibold" : "bg-transparent hover:bg-white/20 hover:text-blue-400",
         "rounded-lg"
       )}
     >

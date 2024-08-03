@@ -32,8 +32,8 @@ function page() {
               </p>
             </div>
           </div>
-          <Card />
         </div>
+          <Card />
       </Container>
     </div>
   );
