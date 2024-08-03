@@ -5,7 +5,7 @@ import React from "react";
 
 function page() {
   return (
-    <div className=" py-6 border-b shadow-md">
+    <div className=" py-6 pb-24 ">
       <Container>
         <div className="flex flex-col gap-4">
           <div className="flex flex-col md:flex-row w-full">
@@ -33,7 +33,7 @@ function page() {
             </div>
           </div>
         </div>
-          <Card />
+        <Card />
       </Container>
     </div>
   );
