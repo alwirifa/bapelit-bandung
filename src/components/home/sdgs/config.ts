@@ -123,7 +123,7 @@ const sdgs = [
   },
   {
     number: "6",
-    name: "Air Bersih dan Sanitasi",
+    name: "Akses Air Bersih dan Sanitasi",
     route: paths.home.sdgs.airbersih,
     image: airbersihSanitasi,
     targetNumber: "Target 6.1",
