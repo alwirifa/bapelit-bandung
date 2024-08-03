@@ -133,6 +133,7 @@ const sdgs = [
     subtitle:"Menguatkan ukuran implementasi dan merevitalisasi kemitraan global untuk pembangunan yang berkelanjutan"
   },
 ];
+
 function Card() {
   return (
     <div className=" pt-16  md:px-6 max-w-7xl w-full mx-auto">
@@ -140,14 +141,10 @@ function Card() {
         {sdgs.map((x) => {
           return (
             <>
-              <article
+              <div
                 key={x.label}
                 className=" md:px-6 transition duration-300 group transform hover:-translate-y-2  cursor-pointer"
               >
-                <Link
-                  href={x.route}
-                  className="absolute opacity-0 top-0 right-0 left-0 bottom-0"
-                />
                 <div className="relative mb-4 rounded-md">
                   <Image
                     width={400}
@@ -164,7 +161,7 @@ function Card() {
                     {x.subtitle}
                   </Link>
                 </div>
-              </article>
+              </div>
             </>
           );
         })}

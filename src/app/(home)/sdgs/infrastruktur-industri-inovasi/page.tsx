@@ -5,7 +5,7 @@ import sdgs from "@/components/home/sdgs/config";
 import Separator from "@/components/home/sdgs/separator";
 
 const Page: React.FC = () => {
-  const goal = sdgs.find((sdg) => sdg.number === "15");
+  const goal = sdgs.find((sdg) => sdg.number === "9");
 
   if (!goal) {
     return <div>Goal not found</div>;
@@ -29,8 +29,6 @@ const Page: React.FC = () => {
           targetNumber={goal.targetNumber2}
           targetDescription={goal.targetDescription2}
         />
-    
-      
       </Container>
     </>
   );
