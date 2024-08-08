@@ -15,6 +15,7 @@ import pekerjaanLayak from "./pekerjaan-layak.webp";
 import penangananIklim from "./penangan-iklim.webp";
 import pendidikan from "./pendidikan.webp";
 import perdamaian from "./perdamaian.webp";
+import dinner from "./Eating dinner with family 1.png"
 
 export {
   airbersihSanitasi,
@@ -34,4 +35,5 @@ export {
   penangananIklim,
   pendidikan,
   perdamaian,
+  dinner
 };

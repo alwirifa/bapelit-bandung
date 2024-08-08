@@ -7,12 +7,12 @@ type Props = {
 
 const DashboardLayout = ({ children }: Props) => {
   return (
-    <div className="min-h-screen w-full relative">
+    <div className="flex flex-col min-h-screen">
       <Header />
-      <main className="h-full">{children}</main>
-      <div className="absolute bottom-0  w-full">
-        <Footer />
-      </div>
+      <main className="flex-grow">
+        {children}
+      </main>
+      <Footer />
     </div>
   );
 };

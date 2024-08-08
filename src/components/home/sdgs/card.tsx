@@ -137,7 +137,7 @@ const sdgs = [
 function Card() {
   return (
     <div className=" pt-16  md:px-6 max-w-7xl w-full mx-auto">
-      <div className="grid gap-4 md:gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4 mb-12">
+      <div className="grid gap-4 md:gap-6 grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
         {sdgs.map((x) => {
           return (
             <>

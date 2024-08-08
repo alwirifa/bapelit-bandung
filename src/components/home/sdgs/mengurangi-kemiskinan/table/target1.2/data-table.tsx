@@ -41,13 +41,14 @@ export function DataTable<TData, TValue>({
                 return (
                   <TableHead
                     key={header.id}
-                    className={` bg-blue-500 text-white 
+                    className={` bg-blue-500  text-white 
+                    ${header.id === "no" && "rounded-tl-md "}
                     ${header.id === "2017" && "bg-red-500 "}
                     ${header.id === "2018" && "bg-orange-500 "}
                     ${header.id === "2019" && "bg-yellow-500 "}
                     ${header.id === "2020" && "bg-green-500 "}
                     ${header.id === "2021" && "bg-purple-500 "}
-                    ${header.id === "2022" && "bg-gray-500 "}
+                    ${header.id === "2022" && "bg-gray-500 rounded-tr-md "}
                   `}
                   >
                     {header.isPlaceholder
