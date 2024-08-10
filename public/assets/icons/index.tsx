@@ -16,6 +16,8 @@ import penangananIklim from "./penangan-iklim.webp";
 import pendidikan from "./pendidikan.webp";
 import perdamaian from "./perdamaian.webp";
 import dinner from "./Eating dinner with family 1.png"
+import pjwalikota from "./walikota.png"
+import pjwalikota_bg from "./pjwalikota-bg.png"
 
 export {
   airbersihSanitasi,
@@ -35,5 +37,8 @@ export {
   penangananIklim,
   pendidikan,
   perdamaian,
-  dinner
+  dinner,
+  pjwalikota,
+  pjwalikota_bg
+
 };
