@@ -36,13 +36,13 @@ type CardData = {
       subtitle: "Informasi dan Statistik tentang Tujuan Pembangunan Berkelanjutan yang Harus Dicapai di Masa Depan",
       href: paths.home.sdgs.overview,
     },
-    // {
-    //   id: 4,
-    //   data: "40",
-    //   title: "Data Infografik",
-    //   subtitle: "Data yang Disajikan dalam Bentuk Grafik dan Visual untuk Mempermudah Pemahaman dan Analisis",
-    //   href: paths.home.infogra,
-    // },
+    {
+      id: 4,
+      data: "40",
+      title: "Data Infografik",
+      subtitle: "Data yang Disajikan dalam Bentuk Grafik dan Visual untuk Mempermudah Pemahaman dan Analisis",
+      href: paths.home.infographics.kemiskinan,
+    },
   ];
   
 
