@@ -42,25 +42,37 @@ function Page() {
     },
   });
 
+
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
-    toast.promise(
-      axios
-        .post(`${process.env.NEXT_PUBLIC_BASE_URL}/login`, values)
-        .then((response) => {
-          localStorage.setItem("token", response.data.data.token);
-          document.cookie = `token=${response.data.data.token}; path=/;`;
-          document.cookie = `role=${response.data.data.role}; path=/;`;
+    try {
+      // Display a loading toast while the request is in progress
+      toast.loading("Loading...");
+  
+      // Make the POST request
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/login`, values, {
+        headers: {
+          'Content-Type': 'application/json',
+        }
+      });
+  
+      // Handle successful response
+      localStorage.setItem("token", response.data.data.token);
+      document.cookie = `token=${response.data.data.token}; path=/;`;
+      document.cookie = `role=${response.data.data.role}; path=/;`;
+  
+      // Show success toast and redirect
+      toast.success("Login successful!");
 
-
-          console.log("Response:", response.data);
-        }),
-      {
-        loading: "Loading...",
-        success: "Login successful!",
-        error: "Login failed. Please try again.",
-      }
-    );
+  
+      console.log("Response:", response.data);
+    } catch (error) {
+      // Handle errors
+      console.error("Error during login:", error);
+      toast.error("Login failed. Please try again.");
+    }
   };
+  
+  
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 lg:px-0 lg:grid lg:grid-cols-2">
