@@ -1,13 +1,21 @@
 "use client";
 
+import { useState } from "react";
 import { useMedia } from "react-use";
 import { usePathname, useRouter } from "next/navigation";
-import NavButton from "@/components/home/nav-button";
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Menu } from "lucide-react";
 import { layoutConfig } from "@/components/home/layout/config";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
+import NavButton from "./nav-button";
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -16,19 +24,22 @@ const Navigation = () => {
   const isMobile = useMedia("(max-width: 1024px)", false);
 
   const onClick = (href: string) => {
-    console.log('Navigating to:', href); // Periksa path yang dikirim ke router.push
     router.push(href);
     setIsOpen(false);
   };
-  
 
-  const homeNavItems = layoutConfig.navItems.find(navGroup => navGroup.key === 'home');
+  const homeNavItems = layoutConfig.navItems.find(
+    (navGroup) => navGroup.key === "home"
+  );
 
-  const routes = (homeNavItems?.items ?? []).filter(item => item.href && item.title).map(item => ({
-    key: item.key,
-    href: item.href!,
-    label: item.title!,
-  }));
+  const routes = (homeNavItems?.items ?? [])
+    .filter((item) => item.href || item.items)
+    .map((item) => ({
+      key: item.key,
+      href: item.href ?? "",
+      label: item.title!,
+      items: item.items ?? [],
+    }));
 
   if (isMobile) {
     return (
@@ -44,15 +55,43 @@ const Navigation = () => {
         </SheetTrigger>
         <SheetContent side="left" className="px-2">
           <nav className="flex flex-col gap-y-2 py-6">
-            {routes.map(route => (
-              <Button
-                key={route.href}
-                variant={route.href === pathname ? "secondary" : "ghost"}
-                onClick={() => onClick(route.href)}
-                className="w-full justify-start"
-              >
-                {route.label}
-              </Button>
+            {routes.map((route) => (
+              <div key={route.key}>
+                {route.items.length > 0 ? (
+                  <DropdownMenu>
+                    <DropdownMenuTrigger>
+                      <Button
+                        variant={
+                          route.href === pathname ? "secondary" : "ghost"
+                        }
+                        className="w-full justify-start"
+                      >
+                        {route.label}
+                      </Button>
+                    </DropdownMenuTrigger>
+                    <DropdownMenuContent>
+                      <DropdownMenuLabel>{route.label}</DropdownMenuLabel>
+                      <DropdownMenuSeparator />
+                      {route.items.map((subItem) => (
+                        <DropdownMenuItem
+                          key={subItem.href}
+                          onClick={() => onClick(subItem.href!)}
+                        >
+                          {subItem.title}
+                        </DropdownMenuItem>
+                      ))}
+                    </DropdownMenuContent>
+                  </DropdownMenu>
+                ) : (
+                  <Button
+                    variant={route.href === pathname ? "secondary" : "ghost"}
+                    onClick={() => route.href && onClick(route.href)}
+                    className="w-full justify-start"
+                  >
+                    {route.label}
+                  </Button>
+                )}
+              </div>
             ))}
           </nav>
         </SheetContent>
@@ -62,13 +101,36 @@ const Navigation = () => {
 
   return (
     <div className="hidden lg:flex items-center gap-x-2 overflow-x-auto">
-      {routes.map(route => (
-        <NavButton
-          key={route.href}
-          href={route.href}
-          label={route.label}
-          isActive={pathname === route.href}
-        />
+      {routes.map((route) => (
+        <div key={route.key} className="relative">
+          {route.items.length > 0 ? (
+            <DropdownMenu>
+              <DropdownMenuTrigger>
+                <NavButton
+                  href={route.href}
+                  label={route.label}
+                  isActive={pathname === route.href}
+                />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent>
+                {route.items.map((subItem) => (
+                  <DropdownMenuItem
+                    key={subItem.href}
+                    onClick={() => onClick(subItem.href!)}
+                  >
+                    {subItem.title}
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
+          ) : (
+            <NavButton
+              href={route.href}
+              label={route.label}
+              isActive={pathname === route.href}
+            />
+          )}
+        </div>
       ))}
     </div>
   );

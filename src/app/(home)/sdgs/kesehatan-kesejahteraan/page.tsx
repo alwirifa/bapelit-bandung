@@ -47,7 +47,7 @@ export default async function page() {
   }
 
   return (
-    <>
+    <div className="pt-28 py-6">
       <Container>
         <HeaderCard
           goalNumber={goal.number}
@@ -111,6 +111,6 @@ export default async function page() {
 
 
       </Container>
-    </>
+    </div>
   );
 }

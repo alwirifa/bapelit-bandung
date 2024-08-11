@@ -4,7 +4,10 @@ export const paths = {
   home: {
     main: "/",
     ikk: "/ikk",
-    infographics: "/infographics",
+    infographics: {
+      kemiskinan:"/infografik/kemiskinan",
+      kelaparan: "/infografik/kelaparan"
+    },
     rpjmd: "/rpjmd",
     sdgs: {
       overview: "/sdgs",
@@ -41,7 +44,8 @@ export const paths = {
 export const routes = {
   "home.main": { path: paths.home.main, roles: [Roles.All] },
   "home.ikk": { path: paths.home.ikk, roles: [Roles.All] },
-  "home.infographics": { path: paths.home.infographics, roles: [Roles.All] },
+  "home.infografik-kelarapan": { path: paths.home.infographics.kelaparan, roles: [Roles.All] },
+  "home.infografik-kemiskinan": { path: paths.home.infographics.kemiskinan, roles: [Roles.All] },
   "home.rpjmd": { path: paths.home.rpjmd, roles: [Roles.All] },
   "home.sdgs": { path: paths.home.sdgs.overview, roles: [Roles.All] },
   "home.sdgs-kemiskinan": { path: paths.home.sdgs.kemiskinan, roles: [Roles.All] },
