@@ -86,7 +86,7 @@ function Page() {
                   <FormControl>
                     <div className="relative flex items-center">
                       <Input
-                        placeholder="Email address"
+                        placeholder="username"
                         type="text"
                         {...field}
                         className="py-6 placeholder:italic placeholder:text-muted text-primary"
