@@ -45,34 +45,48 @@ function Page() {
 
   const handleSubmit = async (values: z.infer<typeof formSchema>) => {
     try {
-      // Display a loading toast while the request is in progress
-      toast.loading("Loading...");
+      axios.defaults.headers.common['Content-Type'] = "application/json"
+
+      const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/login`, JSON.stringify(values));
   
-      // Make the POST request
-      const response = await axios.post(`${process.env.NEXT_PUBLIC_BASE_URL}/login`, values, {
-        headers: {
-          'Content-Type': 'application/json',
-        }
-      });
-  
-      // Handle successful response
       localStorage.setItem("token", response.data.data.token);
       document.cookie = `token=${response.data.data.token}; path=/;`;
       document.cookie = `role=${response.data.data.role}; path=/;`;
   
-      // Show success toast and redirect
       toast.success("Login successful!");
 
+      console.log("data", JSON.stringify(values));
   
       console.log("Response:", response.data);
     } catch (error) {
-      // Handle errors
       console.error("Error during login:", error);
       toast.error("Login failed. Please try again.");
     }
   };
   
+
+  // const handleSubmit = async (values: z.infer<typeof formSchema>) => {
+  //   try {
+  //     const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/login`, {
+  //       method: 'POST',
+     
+  //       body: JSON.stringify(values),
+  //     });
   
+  //     const data = await response.json();
+
+  //     console.log(data)
+  
+  //     toast.success("Login successful!");
+  //  } catch (error) {
+  //   console.log(error);
+    
+  //     toast.error("Login failed. Please try again.");
+  //   }
+  // };
+  
+  
+
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center px-4 lg:px-0 lg:grid lg:grid-cols-2">
